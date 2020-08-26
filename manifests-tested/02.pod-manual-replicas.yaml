@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-replica-1
+  labels:
+    app: sample
+spec:
+  containers:
+  - name: app
+    image: abdennour/sample-app:v1
+    ports:
+    - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-replica-2
+  labels:
+    app: sample
+spec:
+  containers:
+  - name: app
+    image: abdennour/sample-app:v1
+    ports:
+    - containerPort: 80
