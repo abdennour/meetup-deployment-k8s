@@ -1,0 +1,14 @@
+#!/bin/sh
+## @author: abdennour
+
+## /info.html page
+host=$(hostname)
+ip=$(hostname -i)
+
+cat <<EOF >> /usr/share/nginx/html/info.html
+ <h1 style="font-size: 40px;">Hostname: ${host}</h1>
+ <h1 style="font-size: 40px;">IP: ${ip}</h1>
+EOF
+
+# start nginx in foreground
+exec nginx -g "daemon off;"

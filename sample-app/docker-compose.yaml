@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  app-v1:
+    build:
+      context: .
+      target: v1
+      labels:
+        tn.kubernetes.description: "sample app v1"
+        maintainer: "abdennour toumi"        
+    ports:
+    - 9001:80
+    image: abdennour/sample-app:v1
+  app-v2:
+    build:
+      context: .
+      target: v2
+      labels:
+        tn.kubernetes.description: "sample app v2"
+        maintainer: "abdennour toumi"        
+    ports:
+    - 9002:80
+    image: abdennour/sample-app:v2
+
+  app-blue:
+    build:
+      context: .
+      target: blue
+      labels:
+        tn.kubernetes.description: "sample app blue"
+        maintainer: "abdennour toumi"        
+    ports:
+    - 9003:80
+    image: abdennour/sample-app:blue
+
+  app-green:
+    build:
+      context: .
+      target: green
+      labels:
+        tn.kubernetes.description: "sample app green"
+        maintainer: "abdennour toumi"        
+    ports:
+    - 9004:80
+    image: abdennour/sample-app:green

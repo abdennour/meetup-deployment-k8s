@@ -1,0 +1,5 @@
+#!/bin/sh
+## @author: abdennour
+
+file=$1
+cat ${file} | perl -pe 's/\$([_A-Z]+)/$ENV{$1}/g' | perl -pe 's/\$(\{)?([a-zA-Z_]\w*)(?(1)\})/$ENV{$2}/g' > ${file}
