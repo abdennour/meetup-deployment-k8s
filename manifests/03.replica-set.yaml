@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: sample
+  labels:
+    section: intro
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels: #<- Must match labels of Pod
+      app: sample 
+  template:
+  # pod definition
+    metadata:
+      name: sample
+      labels:
+        app: sample
+    spec:
+      containers:
+      - name: app
+        image: abdennour/sample-app:v2 # v1, v2
+        ports:
+        - containerPort: 80

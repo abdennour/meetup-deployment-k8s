@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample
+  labels:
+    section: intro
+spec:
+  # REPLICATION INFO =============================
+  replicas: 3
+  # Deployment Strategy =============================
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #      maxUnavailable: 25%
+  #      maxSurge: 25%
+  # Pod Template =============================
+  selector:
+    matchLabels: #<- Must match labels of Pod
+      app: sample 
+  template: ### PUT HERE POD DEFINITION - except kind and apiVersion
+    metadata:
+      name: sample
+      labels:
+        app: sample
+    spec:
+      containers:
+      - name: app
+        image: abdennour/sample-app:v1 # Update v1 to v2
+        ports:
+        - containerPort: 80
